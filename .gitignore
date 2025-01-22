@@ -1,0 +1,11 @@
+# Ignore directories
+bin/
+build/
+html/
+latex/
+tmp/
+
+# Ignore temporary files
+~*
+*.o
+*.a
