@@ -1,0 +1,38 @@
+Script started on 2025-01-21 21:21:09-08:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="226" LINES="11"]
+[?2004h]0;mikehuang28@LAPTOP-MEGDUU2N: /mnt/c/Users/legen/UW/Embedded_software/520-Assignments/hw_1[01;32mmikehuang28@LAPTOP-MEGDUU2N[00m:[01;34m/mnt/c/Users/legen/UW/Embedded_software/520-Assignments/hw_1[00m$ echo ""H"e"l"l"o" "a"n"d" "w"e"l"c"o"m"e" "t"o" "t"h"e" "n"e"w" "q"u"a"r"t"e"r"!"[C
+[?2004lHello and welcome to the new quarter!
+[?2004h]0;mikehuang28@LAPTOP-MEGDUU2N: /mnt/c/Users/legen/UW/Embedded_software/520-Assignments/hw_1[01;32mmikehuang28@LAPTOP-MEGDUU2N[00m:[01;34m/mnt/c/Users/legen/UW/Embedded_software/520-Assignments/hw_1[00m$ date
+[?2004lTue Jan 21 21:21:34 PST 2025
+[?2004h]0;mikehuang28@LAPTOP-MEGDUU2N: /mnt/c/Users/legen/UW/Embedded_software/520-Assignments/hw_1[01;32mmikehuang28@LAPTOP-MEGDUU2N[00m:[01;34m/mnt/c/Users/legen/UW/Embedded_software/520-Assignments/hw_1[00m$ echo $HOME
+[?2004l/home/mikehuang28
+[?2004h]0;mikehuang28@LAPTOP-MEGDUU2N: /mnt/c/Users/legen/UW/Embedded_software/520-Assignments/hw_1[01;32mmikehuang28@LAPTOP-MEGDUU2N[00m:[01;34m/mnt/c/Users/legen/UW/Embedded_software/520-Assignments/hw_1[00m$ cd ![K~
+[?2004l[?2004h]0;mikehuang28@LAPTOP-MEGDUU2N: ~[01;32mmikehuang28@LAPTOP-MEGDUU2N[00m:[01;34m~[00m$ ls -la
+[?2004ltotal 40
+drwxr-x--- 4 mikehuang28 mikehuang28 4096 Jan 21 21:20 [0m[01;34m.[0m
+drwxr-xr-x 3 root        root        4096 Jan  9 21:48 [01;34m..[0m
+-rw------- 1 mikehuang28 mikehuang28 4765 Jan 21 21:20 .bash_history
+-rw-r--r-- 1 mikehuang28 mikehuang28  220 Jan  9 21:48 .bash_logout
+-rw-r--r-- 1 mikehuang28 mikehuang28 3771 Jan  9 21:48 .bashrc
+drwx------ 2 mikehuang28 mikehuang28 4096 Jan  9 21:48 [01;34m.cache[0m
+-rw-r--r-- 1 mikehuang28 mikehuang28   37 Jan 21 20:49 .gitconfig
+drwxr-xr-x 2 mikehuang28 mikehuang28 4096 Jan 14 16:36 [01;34m.landscape[0m
+-rw-r--r-- 1 mikehuang28 mikehuang28    0 Jan 21 17:38 .motd_shown
+-rw-r--r-- 1 mikehuang28 mikehuang28  807 Jan  9 21:48 .profile
+-rw-r--r-- 1 mikehuang28 mikehuang28    0 Jan  9 21:53 .sudo_as_admin_successful
+[?2004h]0;mikehuang28@LAPTOP-MEGDUU2N: ~[01;32mmikehuang28@LAPTOP-MEGDUU2N[00m:[01;34m~[00m$ midkr[K[K[K[Kkdir temp
+[?2004l[?2004h]0;mikehuang28@LAPTOP-MEGDUU2N: ~[01;32mmikehuang28@LAPTOP-MEGDUU2N[00m:[01;34m~[00m$ ,[Kmv temp temp_new
+[?2004l[?2004h]0;mikehuang28@LAPTOP-MEGDUU2N: ~[01;32mmikehuang28@LAPTOP-MEGDUU2N[00m:[01;34m~[00m$ cd temp_new/
+[?2004l[?2004h]0;mikehuang28@LAPTOP-MEGDUU2N: ~/temp_new[01;32mmikehuang28@LAPTOP-MEGDUU2N[00m:[01;34m~/temp_new[00m$ touch file5
+[?2004l[?2004h]0;mikehuang28@LAPTOP-MEGDUU2N: ~/temp_new[01;32mmikehuang28@LAPTOP-MEGDUU2N[00m:[01;34m~/temp_new[00m$ mv file5 test
+[?2004l[?2004h]0;mikehuang28@LAPTOP-MEGDUU2N: ~/temp_new[01;32mmikehuang28@LAPTOP-MEGDUU2N[00m:[01;34m~/temp_new[00m$ cd ..
+[?2004l[?2004h]0;mikehuang28@LAPTOP-MEGDUU2N: ~[01;32mmikehuang28@LAPTOP-MEGDUU2N[00m:[01;34m~[00m$ rm -rf temp_new/
+[?2004l[?2004h]0;mikehuang28@LAPTOP-MEGDUU2N: ~[01;32mmikehuang28@LAPTOP-MEGDUU2N[00m:[01;34m~[00m$ echo ""I"t"'"s" "a" "s"e"c"r"e"t"!"[C > secretfile
+[?2004l[?2004h]0;mikehuang28@LAPTOP-MEGDUU2N: ~[01;32mmikehuang28@LAPTOP-MEGDUU2N[00m:[01;34m~[00m$ chmod a-w secretfile 
+[?2004l[?2004h]0;mikehuang28@LAPTOP-MEGDUU2N: ~[01;32mmikehuang28@LAPTOP-MEGDUU2N[00m:[01;34m~[00m$ ls 0l[K[K-l secretfile 
+[?2004l-r--r--r-- 1 mikehuang28 mikehuang28 15 Jan 21 21:22 secretfile
+[?2004h]0;mikehuang28@LAPTOP-MEGDUU2N: ~[01;32mmikehuang28@LAPTOP-MEGDUU2N[00m:[01;34m~[00m$ cat >> secretfile 
+[?2004lbash: secretfile: Permission denied
+[?2004h]0;mikehuang28@LAPTOP-MEGDUU2N: ~[01;32mmikehuang28@LAPTOP-MEGDUU2N[00m:[01;34m~[00m$ exit
+[?2004lexit
+
+Script done on 2025-01-21 21:23:12-08:00 [COMMAND_EXIT_CODE="1"]
