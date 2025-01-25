@@ -20,7 +20,7 @@ INCDEP      := -I$(INCDIR)
 # Files
 DGENCONFIG  := docs.config
 HEADERS     := complex.h
-SOURCES     := complex.c unit_tests.c main.c
+SOURCES     := complex.c unit_test.c main.c
 OBJECTS     := $(patsubst %.c, $(BUILDDIR)/%.o, $(notdir $(SOURCES)))
 
 # Default Make
