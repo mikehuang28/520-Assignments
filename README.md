@@ -1,2 +1,0 @@
-## GitHub Setup
-### Hello World!
