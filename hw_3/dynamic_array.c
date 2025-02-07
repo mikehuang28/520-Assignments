@@ -5,7 +5,6 @@
 #include <assert.h>
 
 
-#define EPSILON 1e-9
 
 /* private functions *********************************************************/
 
@@ -50,18 +49,38 @@ static void extend_buffer ( DynamicArray * da ) {
 
 /* public functions **********************************************************/
 
+static DynamicArray *allocated_arrays = NULL; // Head of allocated array list
+static int num_allocated_arrays = 0; // Counter for allocated arrays
+
 DynamicArray * DynamicArray_new(void) {
     DynamicArray * da = (DynamicArray *) malloc(sizeof(DynamicArray));
     da->capacity = DYNAMIC_ARRAY_INITIAL_CAPACITY;
     da->buffer = (double *) calloc ( da->capacity, sizeof(double) );
     da->origin = da->capacity / 2;
     da->end = da->origin;
+
+    // Add to global list
+    da->next = allocated_arrays;
+    allocated_arrays = da;
+    num_allocated_arrays++;
     return da;
 }
 
 void DynamicArray_destroy(DynamicArray * da) {
     free(da->buffer);
     da->buffer = NULL;
+
+    // Remove from linked list
+    DynamicArray **ptr = &allocated_arrays;
+    while (*ptr) {
+        if (*ptr == da) {
+            *ptr = da->next;
+            break;
+        }
+        ptr = &((*ptr)->next);
+    }
+
+    num_allocated_arrays--;
     return;
 }
 
@@ -184,7 +203,9 @@ DynamicArray * DynamicArray_subarray(const DynamicArray * da, int a, int b) {
 
 }
 
+// =================================================================
 // homework 3
+// =================================================================
 
 // min
 double DynamicArray_min(const DynamicArray *da){
@@ -246,7 +267,7 @@ int compare_doubles(const void *a, const void *b) {
 double DynamicArray_median(const DynamicArray *da) {
     assert(da->buffer != NULL);  // Ensure array is not empty
     int size = DynamicArray_size(da);
-    double *sorted = malloc(size * sizeof(double));
+    double *sorted = (double*)malloc(size * sizeof(double));
     if (sorted == NULL) {
         return 0.0;
     }
@@ -331,6 +352,13 @@ DynamicArray *DynamicArray_take(const DynamicArray *da, int n) {
     //     DynamicArray_push(result, 0.0);
     // }
 
+    if (n < 0 && abs_n > size) {
+        printf("Error: Cannot take %d elements from an array of size %d\n", abs_n, size);
+        // return NULL;
+        return DynamicArray_new();
+    }
+
+
     if (abs_n <= size) {
         if (n > 0){
             result = DynamicArray_subarray(da, 0, abs_n); // take from beginning
@@ -338,8 +366,8 @@ DynamicArray *DynamicArray_take(const DynamicArray *da, int n) {
             result = DynamicArray_subarray(da, size - abs_n, size);
         }
     } else { // not enough elements
-        DynamicArray *sub = (n > 0) ? DynamicArray_subarray(da, 0, size)
-                                    : DynamicArray_subarray(da, (size > abs_n) ? size - abs_n : 0, size);
+        DynamicArray *sub = DynamicArray_subarray(da, 0, size);
+
 
         for (int i = 0; i < DynamicArray_size(sub); i++) {
             DynamicArray_push(result, DynamicArray_get(sub, i));
@@ -353,10 +381,33 @@ DynamicArray *DynamicArray_take(const DynamicArray *da, int n) {
         DynamicArray_destroy(sub);
     }
 
-
-
-
     return result;
+}
+
+//================================================================
+// bonus
+//================================================================
+
+int DynamicArray_num_arrays() {
+    return num_allocated_arrays;
+}
+
+int DynamicArray_destroy_all() {
+    printf("Destroying all arrays. Initial count: %d\n", num_allocated_arrays);
+    DynamicArray *current = allocated_arrays;
+    while (current) {
+        DynamicArray *next = current->next;
+        DynamicArray_destroy(current);  // Frees internal data but not the struct itself
+        current = next;
+    }
+    allocated_arrays = NULL;
+    num_allocated_arrays = 0;
+    printf("Final count after destroy_all: %d\n", num_allocated_arrays);
+    return 0;
+}
+
+int DynamicArray_is_valid(const DynamicArray *da) {
+    return da && da->buffer != NULL;
 }
 
 

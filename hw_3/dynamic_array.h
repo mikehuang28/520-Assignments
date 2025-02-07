@@ -3,16 +3,25 @@
 
 #define DYNAMIC_ARRAY_INITIAL_CAPACITY 10
 
-typedef struct {
-    int capacity,
-        origin,
-        end;
-    double * buffer;
+// typedef struct {
+//     int capacity,
+//         origin,
+//         end;
+//     double * buffer;
+//     struct DynamicArray *next; // Pointer for tracking allocated arrays
+// } DynamicArray;
+
+typedef struct DynamicArray {
+  int capacity;
+  int origin;
+  int end;
+  double *buffer;
+  struct DynamicArray *next; // Pointer to next allocated array (if tracking)
 } DynamicArray;
 
 /* Constructors / Destructors ************************************************/
 
-DynamicArray * DynamicArray_new(void);
+DynamicArray * DynamicArray_new();
 void DynamicArray_destroy(DynamicArray *);
 
 /* Getters / Setters *********************************************************/
